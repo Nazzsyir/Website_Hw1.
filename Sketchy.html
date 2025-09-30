@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SketchyPaws - Jasa Gambar Imut</title>
+    <style>
+        /* Reset dan variabel warna */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #5a4a42;
+            background-color: #fff9f0;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* Header */
+        header {
+            background-color: #ffd1dc;
+            padding: 15px 0;
+            border-bottom: 3px solid #ff9eb5;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .logo-icon {
+            width: 50px;
+            height: 50px;
+            background-color: #ff9eb5;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+        }
+        
+        .logo-text {
+            font-size: 24px;
+            font-weight: bold;
+            color: #ff6b93;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 15px;
+        }
+        
+        nav a {
+            text-decoration: none;
+            color: #5a4a42;
+            font-weight: bold;
+            padding: 8px 12px;
+            border-radius: 20px;
+        }
+        
+        nav a:hover {
+            background-color: #ff9eb5;
+            color: white;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #ffd1dc, #ff9eb5);
+            padding: 60px 0;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .hero h1 {
+            font-size: 2.2rem;
+            margin-bottom: 15px;
+            color: #5a4a42;
+        }
+        
+        .hero p {
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto 25px;
+            color: #5a4a42;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: #ff6b93;
+            color: white;
+            padding: 12px 25px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        
+        .btn:hover {
+            background-color: #ff4a7c;
+        }
+        
+        /* Section */
+        section {
+            padding: 40px 0;
+        }
+        
+        h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #ff6b93;
+            font-size: 1.8rem;
+        }
+        
+        /* Layanan */
+        .services {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .service-card {
+            background-color: white;
+            border-radius: 15px;
+            padding: 25px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .service-icon {
+            font-size: 40px;
+            margin-bottom: 15px;
+        }
+        
+        .service-card h3 {
+            margin-bottom: 10px;
+            color: #5a4a42;
+        }
+        
+        /* Portfolio */
+        .portfolio {
+            background-color: #f8f4f0;
+            padding: 40px 0;
+        }
+        
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .gallery-item {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .gallery-img {
+            width: 100%;
+            height: 150px;
+            background-color: #ffd1dc;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 50px;
+        }
+        
+        .gallery-item p {
+            padding: 15px;
+            text-align: center;
+            font-weight: bold;
+        }
+        
+        .view-more {
+            text-align: center;
+            margin-top: 30px;
+        }
+        
+        /* Harga */
+        .pricing-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .pricing-card {
+            background-color: white;
+            border-radius: 15px;
+            padding: 25px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .price {
+            font-size: 2rem;
+            color: #ff6b93;
+            margin: 15px 0;
+            font-weight: bold;
+        }
+        
+        .features {
+            list-style: none;
+            margin: 20px 0;
+            text-align: left;
+        }
+        
+        .features li {
+            padding: 8px 0;
+            border-bottom: 1px dashed #ffd1dc;
+        }
+        
+        /* Kontak */
+        .contact-form {
+            max-width: 600px;
+            margin: 30px auto 0;
+            background-color: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+        
+        input, textarea, select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ffd1dc;
+            border-radius: 8px;
+            font-size: 1rem;
+        }
+        
+        textarea {
+            height: 120px;
+        }
+        
+        .submit-btn {
+            width: 100%;
+            padding: 12px;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #5a4a42;
+            color: white;
+            padding: 40px 0 20px;
+            margin-top: 40px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .footer-section h3 {
+            margin-bottom: 20px;
+            color: #ffd1dc;
+        }
+        
+        .footer-section ul {
+            list-style: none;
+        }
+        
+        .footer-section ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-section a {
+            color: white;
+            text-decoration: none;
+        }
+        
+        .footer-section a:hover {
+            color: #ffd1dc;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.2);
+        }
+        
+        /* Responsif */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header dan Navigasi -->
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <div class="logo-icon">🐾</div>
+                <div class="logo-text">SketchyPaws</div>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#home">Beranda</a></li>
+                    <li><a href="#services">Layanan</a></li>
+                    <li><a href="#portfolio">Portfolio</a></li>
+                    <li><a href="#pricing">Harga</a></li>
+                    <li><a href="#contact">Kontak</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <h1>Jasa Gambar Imut untuk Semua Kebutuhan</h1>
+            <p>SketchyPaws menghadirkan ilustrasi imut dan menggemaskan untuk mempercantik website, media sosial, atau proyek kreatif Anda.</p>
+            <a href="#services" class="btn">Lihat Layanan Kami</a>
+        </div>
+    </section>
+
+    <!-- Tentang Kami -->
+    <section>
+        <div class="container">
+            <h2>Tentang SketchyPaws</h2>
+            <div style="background-color: white; padding: 25px; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.05);">
+                <p>SketchyPaws adalah jasa gambar khusus yang fokus pada ilustrasi imut dan menggemaskan. Kami percaya bahwa gambar yang imut dapat membawa kebahagiaan dan kehangatan dalam kehidupan sehari-hari.</p>
+                <p style="margin: 15px 0;">Dengan tim ilustrator berbakat, kami siap membantu Anda menciptakan gambar-gambar imut untuk berbagai keperluan.</p>
+                <p style="background-color: #ffd1dc; padding: 15px; border-radius: 10px; font-weight: bold; color: #ff6b93;">Moto kami: "Menyebarkan kebahagiaan melalui gambar imut!"</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Layanan -->
+    <section id="services">
+        <div class="container">
+            <h2>Layanan Kami</h2>
+            <div class="services">
+                <div class="service-card">
+                    <div class="service-icon">🐾</div>
+                    <h3>Ilustrasi Karakter</h3>
+                    <p>Kami membuat karakter imut sesuai permintaan Anda, sempurna untuk branding atau konten media sosial.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">📱</div>
+                    <h3>Gambar Media Sosial</h3>
+                    <p>Ilustrasi imut untuk post Instagram, story, atau konten media sosial lainnya.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🎨</div>
+                    <h3>Kustom Gambar</h3>
+                    <p>Gambar imut sesuai permintaan khusus Anda, dengan gaya yang Anda inginkan.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio -->
+    <section class="portfolio" id="portfolio">
+        <div class="container">
+            <h2>Portfolio Kami</h2>
+            <div class="gallery">
+                <div class="gallery-item">
+                    <div class="gallery-img">🐱</div>
+                    <p>Kucing Imut</p>
+                </div>
+                <div class="gallery-item">
+                    <div class="gallery-img">🐶</div>
+                    <p>Anjing Lucu</p>
+                </div>
+                <div class="gallery-item">
+                    <div class="gallery-img">🐰</div>
+                    <p>Kelinci Menggemaskan</p>
+                </div>
+                <div class="gallery-item">
+                    <div class="gallery-img">🐻</div>
+                    <p>Beruang Ceria</p>
+                </div>
+            </div>
+            <div class="view-more">
+                <a href="#" class="btn">Lihat Lebih Banyak</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Harga -->
+    <section id="pricing">
+        <div class="container">
+            <h2>Paket Harga</h2>
+            <div class="pricing-cards">
+                <div class="pricing-card">
+                    <h3>Paket Dasar</h3>
+                    <div class="price">Rp 50.000</div>
+                    <ul class="features">
+                        <li>1 Gambar imut sederhana</li>
+                        <li>Revisi 1 kali</li>
+                        <li>Format PNG</li>
+                    </ul>
+                    <a href="#contact" class="btn">Pesan Sekarang</a>
+                </div>
+                <div class="pricing-card">
+                    <h3>Paket Standar</h3>
+                    <div class="price">Rp 100.000</div>
+                    <ul class="features">
+                        <li>3 Gambar imut</li>
+                        <li>Revisi 3 kali</li>
+                        <li>Format PNG & JPG</li>
+                    </ul>
+                    <a href="#contact" class="btn">Pesan Sekarang</a>
+                </div>
+                <div class="pricing-card">
+                    <h3>Paket Premium</h3>
+                    <div class="price">Rp 200.000</div>
+                    <ul class="features">
+                        <li>5 Gambar imut</li>
+                        <li>Revisi unlimited</li>
+                        <li>Semua format file</li>
+                    </ul>
+                    <a href="#contact" class="btn">Pesan Sekarang</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Kontak -->
+    <section id="contact">
+        <div class="container">
+            <h2>Hubungi Kami</h2>
+            <div class="contact-form">
+                <form>
+                    <div class="form-group">
+                        <label for="nama">Nama Lengkap</label>
+                        <input type="text" id="nama" name="nama" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="pesan">Pesan</label>
+                        <textarea id="pesan" name="pesan" required></textarea>
+                    </div>
+                    <button type="submit" class="btn submit-btn">Kirim Pesan</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>SketchyPaws</h3>
+                    <p>Jasa gambar imut dan menggemaskan untuk semua kebutuhan kreatif Anda.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Kontak</h3>
+                    <ul>
+                        <li>Email: halo@sketchypaws.com</li>
+                        <li>Telepon: (021) 1234-5678</li>
+                        <li>Alamat: Jl. Imut No. 123, Jakarta</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 SketchyPaws. Semua hak dilindungi.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
