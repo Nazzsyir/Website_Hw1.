@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SketchyCute - Jasa Gambar Imut & Karakter</title>
+    <style>
+        /* Reset dan variabel */
+        :root {
+            --primary: #FF9EBC;
+            --secondary: #A6E3E9;
+            --accent: #FFD6A5;
+            --light: #FFF9F5;
+            --dark: #5D5D5D;
+            --text: #333333;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+        }
+        
+        body {
+            background-color: var(--light);
+            color: var(--text);
+            line-height: 1.6;
+        }
+        
+        /* Header dan Navigasi */
+        header {
+            background-color: var(--primary);
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .logo {
+            width: 60px;
+            height: 60px;
+            background-color: var(--secondary);
+            border-radius: 50%;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        
+        .logo::before {
+            content: "";
+            width: 40px;
+            height: 40px;
+            background-color: var(--accent);
+            border-radius: 50%;
+            position: absolute;
+        }
+        
+        .logo::after {
+            content: "";
+            width: 20px;
+            height: 20px;
+            background-color: var(--dark);
+            border-radius: 50%;
+            position: absolute;
+            top: 15px;
+            left: 15px;
+        }
+        
+        .logo-text {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: white;
+            text-shadow: 2px 2px 0px var(--secondary);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+        }
+        
+        nav a {
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+        }
+        
+        nav a:hover {
+            background-color: var(--secondary);
+            color: var(--dark);
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            padding: 4rem 2rem;
+            text-align: center;
+            color: white;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 0px var(--accent);
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+        }
+        
+        .motto {
+            font-style: italic;
+            font-size: 1.5rem;
+            margin-top: 1rem;
+            color: var(--light);
+            text-shadow: 1px 1px 0px var(--dark);
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background-color: var(--accent);
+            color: var(--dark);
+            padding: 0.8rem 2rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+        }
+        
+        /* Section Umum */
+        section {
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        section h2 {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: var(--primary);
+            font-size: 2.2rem;
+        }
+        
+        /* Layanan */
+        .services {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+        
+        .service-card {
+            background-color: white;
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .service-icon {
+            width: 80px;
+            height: 80px;
+            background-color: var(--secondary);
+            border-radius: 50%;
+            margin: 0 auto 1rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 2rem;
+        }
+        
+        .service-card h3 {
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+        
+        /* Portfolio */
+        .portfolio {
+            background-color: var(--secondary);
+        }
+        
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .gallery-item {
+            background-color: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .gallery-item:hover {
+            transform: scale(1.05);
+        }
+        
+        .gallery-img {
+            width: 100%;
+            height: 200px;
+            background-color: var(--accent);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 3rem;
+        }
+        
+        .gallery-info {
+            padding: 1rem;
+            text-align: center;
+        }
+        
+        /* Testimoni */
+        .testimonials {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .testimonial-card {
+            background-color: white;
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 1rem;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            background-color: var(--primary);
+            border-radius: 50%;
+        }
+        
+        /* Harga */
+        .pricing {
+            background-color: var(--accent);
+        }
+        
+        .pricing-plans {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        
+        .plan-card {
+            background-color: white;
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .plan-card.featured {
+            transform: scale(1.05);
+            border: 3px solid var(--primary);
+        }
+        
+        .plan-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .plan-card.featured:hover {
+            transform: scale(1.05) translateY(-10px);
+        }
+        
+        .plan-name {
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+        
+        .plan-price {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 1.5rem;
+            color: var(--dark);
+        }
+        
+        .plan-features {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+        
+        .plan-features li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        /* Kontak */
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+        
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 0.8rem;
+            border: 2px solid #eee;
+            border-radius: 10px;
+            font-size: 1rem;
+        }
+        
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            border-color: var(--primary);
+            outline: none;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-section h3 {
+            margin-bottom: 1rem;
+            color: var(--accent);
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .social-link {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background-color: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .social-link:hover {
+            background-color: var(--secondary);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            margin-top: 2rem;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        /* Responsif */
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            section {
+                padding: 3rem 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <div class="logo-container">
+                <div class="logo"></div>
+                <div class="logo-text">SketchyCute</div>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#home">Beranda</a></li>
+                    <li><a href="#services">Layanan</a></li>
+                    <li><a href="#portfolio">Portfolio</a></li>
+                    <li><a href="#pricing">Harga</a></li>
+                    <li><a href="#contact">Kontak</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <h1>Jasa Gambar Imut & Karakter</h1>
+        <p>Mengubah ide-ide kreatif Anda menjadi ilustrasi imut yang menggemaskan dengan sentuhan personal dan unik.</p>
+        <p class="motto">"Membuat dunia lebih imut, satu gambar pada satu waktu!"</p>
+        <a href="#contact" class="cta-button">Pesan Sekarang</a>
+    </section>
+
+    <!-- Layanan -->
+    <section id="services">
+        <h2>Layanan Kami</h2>
+        <div class="services">
+            <div class="service-card">
+                <div class="service-icon">🎨</div>
+                <h3>Ilustrasi Karakter</h3>
+                <p>Membuat karakter imut berdasarkan deskripsi atau konsep Anda dengan gaya yang unik dan menggemaskan.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">📱</div>
+                <h3>Stiker & Emoji</h3>
+                <p>Desain stiker dan emoji imut untuk media sosial, aplikasi chat, atau platform digital lainnya.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🎁</div>
+                <h3>Hadiah Personal</h3>
+                <p>Ilustrasi khusus untuk hadiah ulang tahun, anniversary, atau momen spesial lainnya.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">📚</div>
+                <h3>Ilustrasi Buku</h3>
+                <p>Membuat ilustrasi untuk buku anak-anak, komik, atau materi edukasi dengan gaya yang imut dan menarik.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio -->
+    <section id="portfolio" class="portfolio">
+        <h2>Portfolio</h2>
+        <div class="gallery">
+            <div class="gallery-item">
+                <div class="gallery-img">🐰</div>
+                <div class="gallery-info">
+                    <h3>Bunny Family</h3>
+                    <p>Ilustrasi keluarga kelinci untuk buku anak</p>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <div class="gallery-img">🐱</div>
+                <div class="gallery-info">
+                    <h3>Kucing Penjelajah</h3>
+                    <p>Karakter kucing petualang untuk stiker line</p>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <div class="gallery-img">🍓</div>
+                <div class="gallery-info">
+                    <h3>Strawberry Friends</h3>
+                    <p>Karakter buah strawberry untuk merchandise</p>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <div class="gallery-img">🐻</div>
+                <div class="gallery-info">
+                    <h3>Bear Couple</h3>
+                    <p>Ilustrasi pasangan beruang untuk anniversary</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimoni -->
+    <section id="testimonials">
+        <h2>Apa Kata Klien Kami</h2>
+        <div class="testimonials">
+            <div class="testimonial-card">
+                <p class="testimonial-text">"Karakter yang dibuat sangat imut dan sesuai dengan deskripsi saya. Proses pengerjaannya cepat dan komunikasinya menyenangkan!"</p>
+                <div class="testimonial-author">
+                    <div class="author-avatar"></div>
+                    <div>
+                        <h4>Edgar</h4>
+                        <p>Content Creator</p>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-card">
+                <p class="testimonial-text">"Hasil gambarnya menggemaskan banget! Pas banget untuk hadiah ulang tahun pacar. Terima kasih SketchyCute!"</p>
+                <div class="testimonial-author">
+                    <div class="author-avatar"></div>
+                    <div>
+                        <h4>Aenthef</h4>
+                        <p>Mahasiswa</p>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-card">
+                <p class="testimonial-text">"Sangat puas dengan ilustrasi untuk buku anak saya. Karakter-karakternya hidup dan disukai anak-anak."</p>
+                <div class="testimonial-author">
+                    <div class="author-avatar"></div>
+                    <div>
+                        <h4>Nazwa Syalsa Davira</h4>
+                        <p>Penulis Buku Anak</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Harga -->
+    <section id="pricing" class="pricing">
+        <h2>Paket Harga</h2>
+        <div class="pricing-plans">
+            <div class="plan-card">
+                <div class="plan-name">Paket Dasar</div>
+                <div class="plan-price">Rp 150.000</div>
+                <ul class="plan-features">
+                    <li>1 Karakter Imut</li>
+                    <li>2 Revisi Minor</li>
+                    <li>File PNG & JPG</li>
+                    <li>Waktu 3-5 Hari</li>
+                </ul>
+                <a href="#contact" class="cta-button">Pilih Paket</a>
+            </div>
+            <div class="plan-card featured">
+                <div class="plan-name">Paket Premium</div>
+                <div class="plan-price">Rp 300.000</div>
+                <ul class="plan-features">
+                    <li>2 Karakter Imut</li>
+                    <li>5 Revisi</li>
+                    <li>File PNG, JPG, PDF</li>
+                    <li>Background Sederhana</li>
+                    <li>Waktu 5-7 Hari</li>
+                </ul>
+                <a href="#contact" class="cta-button">Pilih Paket</a>
+            </div>
+            <div class="plan-card">
+                <div class="plan-name">Paket Pro</div>
+                <div class="plan-price">Rp 500.000</div>
+                <ul class="plan-features">
+                    <li>3+ Karakter Imut</li>
+                    <li>Revisi Unlimited</li>
+                    <li>Semua Format File</li>
+                    <li>Background Detail</li>
+                    <li>Waktu 7-10 Hari</li>
+                </ul>
+                <a href="#contact" class="cta-button">Pilih Paket</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Kontak -->
+    <section id="contact">
+        <h2>Hubungi Kami</h2>
+        <div class="contact-form">
+            <form>
+                <div class="form-group">
+                    <label for="name">Nama Lengkap</label>
+                    <input type="text" id="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="service">Jenis Layanan</label>
+                    <select id="service">
+                        <option value="character">Ilustrasi Karakter</option>
+                        <option value="sticker">Stiker & Emoji</option>
+                        <option value="gift">Hadiah Personal</option>
+                        <option value="book">Ilustrasi Buku</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="message">Deskripsi Pesanan</label>
+                    <textarea id="message" rows="5" required></textarea>
+                </div>
+                <button type="submit" class="cta-button" style="width: 100%;">Kirim Pesan</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>SketchyCute</h3>
+                <p>Jasa gambar imut dan karakter yang menggemaskan untuk berbagai kebutuhan kreatif Anda.</p>
+                <div class="social-links">
+                    <a href="#" class="social-link">IG</a>
+                    <a href="#" class="social-link">FB</a>
+                    <a href="#" class="social-link">TW</a>
+                    <a href="#" class="social-link">YT</a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Kontak</h3>
+                <p>Email: hello@sketchycute.com</p>
+                <p>Telepon: +62 812 3456 7890</p>
+                <p>Alamat: Jl. Imut No. 123, Jakarta</p>
+            </div>
+            <div class="footer-section">
+                <h3>Jam Operasional</h3>
+                <p>Senin - Jumat: 09.00 - 18.00</p>
+                <p>Sabtu: 10.00 - 15.00</p>
+                <p>Minggu: Tutup</p>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2023 SketchyCute - Jasa Gambar Imut. All Rights Reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
